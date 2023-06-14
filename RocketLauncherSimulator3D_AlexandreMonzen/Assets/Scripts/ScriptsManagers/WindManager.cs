@@ -5,7 +5,7 @@ using UnityEngine;
 public sealed class WindManager : MonoBehaviour
 {
     [Header("Default")]
-    [SerializeField] private Vector2 _globalWindVector;
+    [SerializeField] public Vector2 _globalWindVector;
     
     [Header("Configurable")]
     [SerializeField] private bool _randomWind;
@@ -15,12 +15,4 @@ public sealed class WindManager : MonoBehaviour
     [SerializeField] private float maxY;
 
     public Vector2 globalWindVector { get => _globalWindVector; private set => _globalWindVector = value; }
-
-    private void Awake()
-    {
-        if(_randomWind)
-        {
-            _globalWindVector = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        }
-    }
 }

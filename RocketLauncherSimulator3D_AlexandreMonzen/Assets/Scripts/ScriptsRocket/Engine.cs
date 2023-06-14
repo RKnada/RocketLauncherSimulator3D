@@ -21,7 +21,6 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] protected float _timeToReachMinForce;
 
     [Header("Visuals and SFX")]
-    [SerializeField] protected ParticleSystem _fireParticle;
     [SerializeField] protected float _timeFadeSound;
     [SerializeField] protected float _minVolume;
     [SerializeField] protected float _maxVolume;
@@ -85,11 +84,6 @@ public abstract class Engine : MonoBehaviour
             StartCoroutine(StopEngine());
         }
 
-        if (!_fireParticle.isPlaying)
-        {
-            _fireParticle.Play();
-        }
-
         _engineOn = true;
         _rigidbody.freezeRotation = false;
         _actualImpulseForce = _minImpulseForce;
@@ -112,7 +106,6 @@ public abstract class Engine : MonoBehaviour
                 UpdateFuelStatus.Invoke(this, EventArgs.Empty);
                 yield return null;
             }
-
             _runEngine = true;
             _canCheckAltitude = true;
             yield return null;
@@ -125,7 +118,6 @@ public abstract class Engine : MonoBehaviour
     {
         yield return new WaitForSeconds(_timeToDeactivateEngine);
         _engineOn = false;
-        _fireParticle.Stop();
         StartCoroutine(FadeOutSound());
         _runEngine = false;
         StopCoroutine(RunEngine(_timeToDeactivateEngine));

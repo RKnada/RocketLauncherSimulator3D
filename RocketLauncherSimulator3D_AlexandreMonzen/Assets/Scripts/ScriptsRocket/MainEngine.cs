@@ -21,7 +21,6 @@ public sealed class MainEngine : Engine
     protected override IEnumerator RunEngine(float timeToDeactivateEngine)
     {
         StartCoroutine(BreakJoint());
-
         yield return StartCoroutine(base.RunEngine(timeToDeactivateEngine));
     }
 
@@ -57,12 +56,7 @@ public sealed class MainEngine : Engine
         yield return new WaitForSeconds(_timeToDetachment);
         _noseConeEngine.RunEngineMethod(_noseConeEngine.timeToDeactivateEngine);
         
-        if (_fixedJoint)
-        {
-            _fixedJoint.breakForce = 0;
-            _hasJointConnected = false;
-            CheckJointConnection?.Invoke(this, EventArgs.Empty);
-        }
+
 
         yield return null;
     }
