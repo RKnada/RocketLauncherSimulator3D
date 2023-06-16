@@ -56,8 +56,6 @@ public sealed class MainEngine : Engine
         yield return new WaitForSeconds(_timeToDetachment);
         _noseConeEngine.RunEngineMethod(_noseConeEngine.timeToDeactivateEngine);
         
-
-
         yield return null;
     }
 }

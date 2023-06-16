@@ -62,6 +62,8 @@ public abstract class Engine : MonoBehaviour
         _checkedAltitude = false;
 
         _audioSource.volume = 0;
+
+        Debug.Log("╬с╥ндо╤Л");
     }
 
     protected void Update()

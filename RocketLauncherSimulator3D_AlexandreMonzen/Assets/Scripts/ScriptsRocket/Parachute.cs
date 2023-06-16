@@ -59,6 +59,7 @@ public sealed class Parachute : MonoBehaviour
 
     private void HandleMovement()
     {
+        Debug.Log("╬с╥ндо╤Л");
         _rigidbody.AddForce(_cameraTransform.transform.forward * inputVector.y * _velocity, ForceMode.Force);
         _rigidbody.AddForce(_cameraTransform.transform.right * inputVector.x * _velocity, ForceMode.Force);
     }
